@@ -1,8 +1,10 @@
+from __future__ import division
 from scipy import sparse
 import random
 import numpy as np
 import time
 from matplotlib import pyplot as plt
+
 
 
 sample = np.array(range(0,75), dtype=np.uint8)
@@ -160,9 +162,45 @@ def corporate_control(matrix, s):
 #     if control_finder2(mtx, 0) != control_finder(mtx,0):
 #         print('ERROR')
 
+def step_gradient(b_current, m_current, x, y):
+
+    learning_rate = 0.0000001
+    b_grad = 0
+    m_grad = 0
+    n = float(len(x))
+    for i in range(len(x)):
+        x_val = x[i]
+
+        y_val = y[i]
+        # print('x val', x_val, 'y val', y_val)
+        # error = y_val - (x_val * m_current + b_current)
+        # print('error=', error)
+        # b_grad2 = y_val - (x_val * (m_current) + b_current)
+        b_grad += -(2/n) * (y_val - ((m_current * x_val) + b_current))
+        print('b grad', b_grad)
+        m_grad += -(2/n) * x_val * (y_val - ((m_current * x_val) + b_current))
+        print('m grad', m_grad)
+    new_b = b_current - (learning_rate * b_grad)
+    new_m = m_current - (learning_rate * m_grad)
+    return [new_b, new_m]
+
+def gradient_calculator(m, b, x, y):
+    h = 0.00001
+    error = (y - ((x * m)+b)
+    error_m_plus_h = (y - ((x * (m+h))+b)
+    
+
+def linear_regression(x, y):
+    num_iterations = 10
+    b = 0
+    m = 0
+    for i in range(num_iterations):
+        print('b', b, 'm', m)
+        b, m = step_gradient(b, m, x, y)
+    return (b, m)
 
 def time_test():
-    k = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+    k = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
     time_list = []
     n_val = [2**power for power in k]
     for n in n_val:
@@ -173,8 +211,12 @@ def time_test():
         corporate_control(matrix, s)
         total = time.time() - start
         time_list.append(total)
-    print(time_list)
-    plt.scatter(n_val, time_list)
+    fig, ax = plt.subplots()
+    ax.scatter(n_val, time_list)
+    b, m = linear_regression(np.asarray(n_val, dtype=np.float128), np.asarray(time_list, dtype=np.float128))
+    y_1 = n_val[-1] * round(m, 3) + round(b, 3)
+    print(y_1)
+    ax.plot([n_val[0], n_val[-1]], [0, y_1], c='r')
     plt.show()
     return (n_val, time_list)
 
@@ -182,21 +224,22 @@ def time_test():
 
 x, y = time_test()
 
-m = 0
-b = 0
-
-y_hat = [x_val * m + b for x_val in x]
-
-
-def error_calc(y, y_hat):
-    y = np.array(y)
-    y_hat = np.array(y_hat)
-    errors = y_hat - y
-    errors = errors**2
-    return sum(errors)
+# m = 0
+# b = 0
+#
+# y_hat = [x_val * m + b for x_val in x]
 
 
-print(error_calc(y, y_hat))
+
+# def error_calc(y, y_hat):
+#     y = np.array(y)
+#     y_hat = np.array(y_hat)
+#     errors = y_hat - y
+#     errors = errors**2
+#     return sum(errors)
+#
+#
+# print(error_calc(y, y_hat))
 
 
 
