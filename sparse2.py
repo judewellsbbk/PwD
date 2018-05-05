@@ -162,42 +162,48 @@ def corporate_control(matrix, s):
 #     if control_finder2(mtx, 0) != control_finder(mtx,0):
 #         print('ERROR')
 
-def step_gradient(b_current, m_current, x, y):
-
-    learning_rate = 0.0000001
-    b_grad = 0
-    m_grad = 0
-    n = float(len(x))
-    for i in range(len(x)):
-        x_val = x[i]
-
-        y_val = y[i]
-        # print('x val', x_val, 'y val', y_val)
-        # error = y_val - (x_val * m_current + b_current)
-        # print('error=', error)
-        # b_grad2 = y_val - (x_val * (m_current) + b_current)
-        b_grad += -(2/n) * (y_val - ((m_current * x_val) + b_current))
-        print('b grad', b_grad)
-        m_grad += -(2/n) * x_val * (y_val - ((m_current * x_val) + b_current))
-        print('m grad', m_grad)
-    new_b = b_current - (learning_rate * b_grad)
-    new_m = m_current - (learning_rate * m_grad)
-    return [new_b, new_m]
-
-def gradient_calculator(m, b, x, y):
-    h = 0.00001
-    error = (y - ((x * m)+b)
-    error_m_plus_h = (y - ((x * (m+h))+b)
-    
-
-def linear_regression(x, y):
-    num_iterations = 10
-    b = 0
-    m = 0
-    for i in range(num_iterations):
-        print('b', b, 'm', m)
-        b, m = step_gradient(b, m, x, y)
-    return (b, m)
+# def step_gradient(b_current, m_current, x, y):
+#
+#     learning_rate = 0.0000001
+#     b_grad = 0
+#     m_grad = 0
+#     n = float(len(x))
+#     for i in range(len(x)):
+#         x_val = x[i]
+#
+#         y_val = y[i]
+#         # print('x val', x_val, 'y val', y_val)
+#         # error = y_val - (x_val * m_current + b_current)
+#         # print('error=', error)
+#         # b_grad2 = y_val - (x_val * (m_current) + b_current)
+#         b_grad += -(2/n) * (y_val - ((m_current * x_val) + b_current))
+#         print('b grad', b_grad)
+#         m_grad += -(2/n) * x_val * (y_val - ((m_current * x_val) + b_current))
+#         print('m grad', m_grad)
+#         print('m_grad2', gradient_calculator(m_current, b_current, x_val, y_val))
+#     new_b = b_current - (learning_rate * b_grad)
+#     new_m = m_current - (learning_rate * gradient_calculator(m_current, b_current, x_val, y_val))
+#     return [new_b, new_m]
+#
+# def gradient_calculator(m, b, x, y):
+#     h = 0.1
+#     error = abs((y - ((x * m)+b)))
+#     error_m_plus_h = abs((y - ((x * (m+h))+ b)))
+#     error_dif = (error_m_plus_h - error)
+#     gradient_m = error_dif / h
+#     return(gradient_m)
+#
+#
+#
+#
+# def linear_regression(x, y):
+#     num_iterations = 10
+#     b = 0
+#     m = 0
+#     for i in range(num_iterations):
+#         print('b', b, 'm', m)
+#         b, m = step_gradient(b, m, x, y)
+#     return (b, m)
 
 def time_test():
     k = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
@@ -211,18 +217,12 @@ def time_test():
         corporate_control(matrix, s)
         total = time.time() - start
         time_list.append(total)
-    fig, ax = plt.subplots()
-    ax.scatter(n_val, time_list)
-    b, m = linear_regression(np.asarray(n_val, dtype=np.float128), np.asarray(time_list, dtype=np.float128))
-    y_1 = n_val[-1] * round(m, 3) + round(b, 3)
-    print(y_1)
-    ax.plot([n_val[0], n_val[-1]], [0, y_1], c='r')
-    plt.show()
     return (n_val, time_list)
 
 
 
 x, y = time_test()
+print(x,y)
 
 # m = 0
 # b = 0
@@ -248,24 +248,74 @@ x, y = time_test()
 # print (sparse.find(matrix))
 # print(control_finder2(matrix, 0))
 
+#
+# def  matrix_checker(n):
+#     fail_count = 0
+#     for _ in range(n):
+#         M = coo_m4(4)
+#         size = M.shape[0]
+#         expected = [[100]*size]
+#         if not ((expected == M.sum(axis=0)).all()):
+#             print("FAIL:")
+#             print(M.todense())
+#             print(M.sum(axis=0))
+#             fail_count += 1
+#         if sum(M.diagonal()) != 0:
+#             print("FAIL:")
+#             print(M.todense())
+#             fail_count += 1
+#     print('FAIL COUNT:', fail_count)
 
-def  matrix_checker(n):
-    fail_count = 0
-    for _ in range(n):
-        M = coo_m4(4)
-        size = M.shape[0]
-        expected = [[100]*size]
-        if not ((expected == M.sum(axis=0)).all()):
-            print("FAIL:")
-            print(M.todense())
-            print(M.sum(axis=0))
-            fail_count += 1
-        if sum(M.diagonal()) != 0:
-            print("FAIL:")
-            print(M.todense())
-            fail_count += 1
-    print('FAIL COUNT:', fail_count)
+###########################################################################################
 
 
+def compute_error_for_line_given_points(b, m, x_list, y_list):
+    totalError = 0
+    for i in range(0, len(x_list)):
+        x = x_list[i]
+        y = y_list[i]
+        totalError += (y - (m * x + b)) ** 2
+    return totalError / float(len(x_list))
+
+def step_gradient(b_current, m_current, x_list, y_list, learningRate):
+    b_gradient = 0
+    m_gradient = 0
+    N = float(len(x_list))
+    for i in range(0, len(x_list)):
+        x = x_list[i]
+        y = y_list[i]
+        b_gradient += -(2/N) * (y - ((m_current * x) + b_current))
+        m_gradient += -(2/N) * x * (y - ((m_current * x) + b_current))
+    new_b = b_current - (learningRate * b_gradient)
+    new_m = m_current - (learningRate * m_gradient)
+    return [new_b, new_m]
+
+
+def gradient_descent_runner(x_list, y_list, starting_b, starting_m, learning_rate, num_iterations):
+    b = starting_b
+    m = starting_m
+    for i in range(num_iterations):
+        b, m = step_gradient(b, m, x_list, y_list, learning_rate)
+    return [b, m]
+
+
+def run():
+    x_list = x
+    y_list = y
+    learning_rate = 0.0000000001
+    initial_b = 0 # initial y-intercept guess
+    initial_m = 0 # initial slope guess
+    num_iterations = 10000
+    print "Starting gradient descent at b = {0}, m = {1}, error = {2}".format(initial_b, initial_m, compute_error_for_line_given_points(initial_b, initial_m, x_list, y_list))
+    print "Running..."
+    [b, m] = gradient_descent_runner(x_list, y_list, initial_b, initial_m, learning_rate, num_iterations)
+    print "After {0} iterations b = {1}, m = {2}, error = {3}".format(num_iterations, b, m, compute_error_for_line_given_points(b, m, x_list, y_list))
+    fig, ax = plt.subplots()
+    ax.scatter(x_list, y_list)
+    ax.plot([0, x_list[-1]], [b, ((x_list[-1] * m)+b)], c='r')
+    plt.xlabel("number of rows in matrix")
+    plt.ylabel("time taken (seconds)")
+    plt.show()
 
 # matrix_checker(10000)
+run()

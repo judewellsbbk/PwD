@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3d425b19-d173-4f82-bc09-e0e7fe25e222" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/PwD.iml" afterPath="$PROJECT_DIR$/.idea/PwD.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sparse2.py" afterPath="$PROJECT_DIR$/sparse2.py" />
     </list>
@@ -18,8 +17,20 @@
       <file leaf-file-name="sparse2.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/sparse2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="190" column="4" lean-forward="false" selection-start-line="190" selection-start-column="4" selection-end-line="190" selection-end-column="4" />
+            <state relative-caret-position="238">
+              <caret line="308" column="62" lean-forward="false" selection-start-line="308" selection-start-column="62" selection-end-line="308" selection-end-column="62" />
+              <folding>
+                <element signature="e#0#31#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="jude_gradient_descent.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/jude_gradient_descent.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="51" selection-end-column="14" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -65,6 +76,8 @@
       <find>shape</find>
       <find>plt</find>
       <find>def error_calc\(y\, y_hat\)\:\n\#     y \= np\.array\(y\)\n\#     y_hat \= np\.array\(y_hat\)\n\#     errors \= y_hat \- y\n\#     errors \= errors\*\*2\n\#     return sum\(errors\)\n\# \n\# \n\# print\(error_calc\(y\, y_hat\)\)</find>
+      <find>points</find>
+      <find>plt.show</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -93,14 +106,15 @@
         <option value="$PROJECT_DIR$/../LEOSTV/Computer Science STV vote system/votecount.py" />
         <option value="$PROJECT_DIR$/sparse.py" />
         <option value="$PROJECT_DIR$/Jude Wells PwD Coursework 2.py" />
+        <option value="$PROJECT_DIR$/jude_gradient_descent.py" />
         <option value="$PROJECT_DIR$/sparse2.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="333" />
-    <option name="y" value="23" />
-    <option name="width" value="795" />
+    <option name="x" value="362" />
+    <option name="y" value="60" />
+    <option name="width" value="1013" />
     <option name="height" value="773" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -160,6 +174,23 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
     </configuration>
+    <configuration name="jude_gradient_descent" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="PwD" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/jude_gradient_descent.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+    </configuration>
     <configuration name="sparse" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -211,37 +242,20 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
     </configuration>
-    <configuration name="votecount" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../LEOSTV" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="PwD" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../LEOSTV/votecount.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-    </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.votecount" />
-      <item index="1" class="java.lang.String" itemvalue="Python.votecount (1)" />
-      <item index="2" class="java.lang.String" itemvalue="Python.Jude Wells PwD Coursework 2" />
-      <item index="3" class="java.lang.String" itemvalue="Python.sparse" />
-      <item index="4" class="java.lang.String" itemvalue="Python.sparse2" />
+      <item index="0" class="java.lang.String" itemvalue="Python.votecount (1)" />
+      <item index="1" class="java.lang.String" itemvalue="Python.Jude Wells PwD Coursework 2" />
+      <item index="2" class="java.lang.String" itemvalue="Python.sparse" />
+      <item index="3" class="java.lang.String" itemvalue="Python.sparse2" />
+      <item index="4" class="java.lang.String" itemvalue="Python.jude_gradient_descent" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python.sparse2" />
-        <item index="1" class="java.lang.String" itemvalue="Python.Jude Wells PwD Coursework 2" />
-        <item index="2" class="java.lang.String" itemvalue="Python.sparse" />
-        <item index="3" class="java.lang.String" itemvalue="Python.votecount (1)" />
-        <item index="4" class="java.lang.String" itemvalue="Python.votecount" />
+        <item index="1" class="java.lang.String" itemvalue="Python.jude_gradient_descent" />
+        <item index="2" class="java.lang.String" itemvalue="Python.Jude Wells PwD Coursework 2" />
+        <item index="3" class="java.lang.String" itemvalue="Python.sparse" />
+        <item index="4" class="java.lang.String" itemvalue="Python.votecount (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -262,14 +276,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="333" y="23" width="795" height="773" extended-state="0" />
+    <frame x="362" y="60" width="1013" height="773" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21984127" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.41887906" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.41887906" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -398,10 +412,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/jude_gradient_descent.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="51" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/sparse2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="190" column="4" lean-forward="false" selection-start-line="190" selection-start-column="4" selection-end-line="190" selection-end-column="4" />
+        <state relative-caret-position="238">
+          <caret line="308" column="62" lean-forward="false" selection-start-line="308" selection-start-column="62" selection-end-line="308" selection-end-column="62" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>
